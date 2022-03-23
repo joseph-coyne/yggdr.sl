@@ -11,7 +11,7 @@
 		"axios": "^0.21.1",
 		"cors-anywhere": "^0.4.4",
 		"firebase": "^9.1.0",
-		"vue": "^3.2.1",
+		"vue": "^3.2.31",
 		"vue-axios": "^3.2.5",
 		"vue-router": "^4.0.8"
 	},
