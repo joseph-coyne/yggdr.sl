@@ -1,10 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
 
-/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
-	mode: 'jit',
-	purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+	content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 	darkMode: 'class',
 	theme: {
 		extend: {
@@ -40,9 +37,6 @@ module.exports = {
 				plex: ['"IBM Plex Sans"', ...defaultTheme.fontFamily.sans],
 			},
 		},
-	},
-	corePlugins: {
-		outline: false,
 	},
 	plugins: [
 		require('@tailwindcss/forms'),

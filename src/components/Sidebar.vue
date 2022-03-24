@@ -19,18 +19,7 @@
 								v-for="item in navigation"
 								:key="item.name"
 								:to="item.path"
-								class="
-									text-gray-300
-									hover:bg-gray-700 hover:text-white
-									flex
-									items-center
-									px-4
-									py-4
-									text-sm
-									font-medium
-									rounded-md
-									font-plex
-								"
+								class="text-gray-300 hover:bg-gray-700 hover:text-white flex items-center px-4 py-4 text-sm font-medium rounded-md font-plex"
 							>
 								<component
 									:is="item.icon"
@@ -72,6 +61,7 @@ export default {
 	},
 };
 </script>
+
 <style scoped>
 a.router-link-active {
 	@apply bg-gray-500 text-blue-500 bg-opacity-20;

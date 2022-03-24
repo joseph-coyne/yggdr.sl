@@ -1,145 +1,14 @@
 <template>
 	<div class="relative bg-gray-50 dark:bg-dark w-full flex overflow-hidden">
-		<!-- Mobile menu -->
-		<TransitionRoot as="template" :show="mobileMenuOpen">
-			<Dialog
-				as="div"
-				static
-				class="fixed inset-0 z-40 flex md:hidden"
-				@close="mobileMenuOpen = false"
-				:open="mobileMenuOpen"
-			>
-				<TransitionChild
-					as="template"
-					enter="transition-opacity ease-linear duration-300"
-					enter-from="opacity-0"
-					enter-to="opacity-100"
-					leave="transition-opacity ease-linear duration-300"
-					leave-from="opacity-100"
-					leave-to="opacity-0"
-				>
-					<DialogOverlay class="fixed inset-0 bg-gray-600 bg-opacity-75" />
-				</TransitionChild>
-				<TransitionChild
-					as="template"
-					enter="transition ease-in-out duration-300 transform"
-					enter-from="-translate-x-full"
-					enter-to="translate-x-0"
-					leave="transition ease-in-out duration-300 transform"
-					leave-from="translate-x-0"
-					leave-to="-translate-x-full"
-				>
-					<div
-						class="
-							relative
-							max-w-xs
-							w-full
-							bg-indigo-700
-							pt-5
-							pb-4
-							flex-1 flex flex-col
-						"
-					>
-						<TransitionChild
-							as="template"
-							enter="ease-in-out duration-300"
-							enter-from="opacity-0"
-							enter-to="opacity-100"
-							leave="ease-in-out duration-300"
-							leave-from="opacity-100"
-							leave-to="opacity-0"
-						>
-							<div class="absolute top-1 right-0 -mr-14 p-1">
-								<button
-									type="button"
-									class="
-										h-12
-										w-12
-										rounded-full
-										flex
-										items-center
-										justify-center
-										focus:outline-none focus:ring-2 focus:ring-white
-									"
-									@click="mobileMenuOpen = false"
-								>
-									<XIcon class="h-6 w-6 text-white" aria-hidden="true" />
-									<span class="sr-only">Close sidebar</span>
-								</button>
-							</div>
-						</TransitionChild>
-						<div class="flex-shrink-0 px-4 flex items-center">
-							<img
-								class="h-8 w-auto"
-								src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white"
-								alt="Workflow"
-							/>
-						</div>
-						<div class="mt-5 flex-1 h-0 px-2 overflow-y-auto">
-							<nav class="h-full flex flex-col">
-								<div class="space-y-1">
-									<a
-										v-for="item in navigation"
-										:key="item.name"
-										:href="item.href"
-										:class="[
-											item.current
-												? 'bg-indigo-800 text-white'
-												: 'text-indigo-100 hover:bg-indigo-800 hover:text-white',
-											'group py-2 px-3 rounded-md flex items-center text-sm font-medium',
-										]"
-										:aria-current="item.current ? 'page' : undefined"
-									>
-										<component
-											:is="item.icon"
-											:class="[
-												item.current
-													? 'text-white'
-													: 'text-indigo-300 group-hover:text-white',
-												'mr-3 h-6 w-6',
-											]"
-											aria-hidden="true"
-										/>
-										<span>{{ item.name }}</span>
-									</a>
-								</div>
-							</nav>
-						</div>
-					</div>
-				</TransitionChild>
-				<div class="flex-shrink-0 w-14" aria-hidden="true">
-					<!-- Dummy element to force sidebar to shrink to fit close icon -->
-				</div>
-			</Dialog>
-		</TransitionRoot>
-
 		<!-- Content area -->
 		<div class="flex-1 flex flex-col overflow-hidden">
-			<header class="w-full">
+			<!-- <header class="w-full">
 				<div
-					class="
-						relative
-						z-10
-						flex-shrink-0
-						h-16
-						bg-white
-						border-b border-gray-200
-						shadow-sm
-						flex
-					"
+					class="relative z-10 flex-shrink-0 h-10 bg-white border-b border-gray-200 shadow-sm flex"
 				>
 					<button
 						type="button"
-						class="
-							border-r border-gray-200
-							px-4
-							text-dark
-							focus:outline-none
-							focus:ring-2
-							focus:ring-inset
-							focus:ring-indigo-500
-							md:hidden
-						"
+						class="border-r border-gray-200 px-4 text-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 md:hidden"
 						@click="mobileMenuOpen = true"
 					>
 						<span class="sr-only">Open sidebar</span>
@@ -149,71 +18,30 @@
 						<div class="flex-1 flex">
 							<form class="w-full flex md:ml-0" action="#" method="GET">
 								<label for="search-field" class="sr-only"
-									>Search all files</label
+									>Search all movies</label
 								>
 								<div
-									class="
-										relative
-										w-full
-										text-gray-400
-										focus-within:text-gray-600
-									"
+									class="relative w-full text-gray-400 focus-within:text-gray-600"
 								>
 									<div
-										class="
-											pointer-events-none
-											absolute
-											inset-y-0
-											left-0
-											flex
-											items-center
-										"
+										class="pointer-events-none absolute inset-y-0 left-0 flex items-center"
 									>
 										<SearchIcon
 											class="flex-shrink-0 h-5 w-5"
 											aria-hidden="true"
 										/>
 									</div>
-									<!-- <input
-										name="search-field"
-										id="search-field"
-										class="
-											h-full
-											w-full
-											border-transparent
-											py-2
-											pl-8
-											pr-3
-											text-base text-gray-900
-											placeholder-dark
-											focus:outline-none
-											focus:ring-0
-											focus:border-transparent
-											focus:placeholder-gray-400
-											sm:hidden
-										"
-										placeholder="Search"
-										type="search"
-									/> -->
 									<input
 										name="search-field"
 										id="search-field"
-										class="
-											hidden
-											h-full
-											w-full
-											border-transparent
-											py-2
-											pl-8
-											pr-3
-											text-base text-gray-900
-											placeholder-dark
-											focus:outline-none
-											focus:ring-0
-											focus:border-transparent
-											focus:placeholder-gray-400
-											sm:block
-										"
+										class="h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-dark focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400 sm:hidden"
+										placeholder="Search"
+										type="search"
+									/>
+									<input
+										name="search-field"
+										id="search-field"
+										class="hidden h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-dark focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400 sm:block"
 										placeholder="Search all files"
 										type="search"
 									/>
@@ -221,20 +49,10 @@
 							</form>
 						</div>
 						<div class="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
-							<!-- Profile dropdown -->
 							<Menu as="div" class="relative flex-shrink-0">
 								<div>
 									<MenuButton
-										class="
-											bg-white
-											rounded-full
-											flex
-											text-sm
-											focus:outline-none
-											focus:ring-2
-											focus:ring-offset-2
-											focus:ring-indigo-500
-										"
+										class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 									>
 										<span class="sr-only">Open user menu</span>
 										<img
@@ -253,19 +71,7 @@
 									leave-to-class="transform opacity-0 scale-95"
 								>
 									<MenuItems
-										class="
-											origin-top-right
-											absolute
-											right-0
-											mt-2
-											w-48
-											rounded-md
-											shadow-lg
-											py-1
-											bg-white
-											ring-1 ring-black ring-opacity-5
-											focus:outline-none
-										"
+										class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
 									>
 										<MenuItem
 											v-for="item in userNavigation"
@@ -287,20 +93,7 @@
 
 							<button
 								type="button"
-								class="
-									flex
-									bg-indigo-600
-									p-1
-									rounded-full
-									items-center
-									justify-center
-									text-white
-									hover:bg-indigo-700
-									focus:outline-none
-									focus:ring-2
-									focus:ring-offset-2
-									focus:ring-indigo-500
-								"
+								class="flex bg-blue-600 p-1 rounded-full items-center justify-center text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 							>
 								<PlusIconOutline class="h-6 w-6" aria-hidden="true" />
 								<span class="sr-only">Add file</span>
@@ -308,55 +101,32 @@
 						</div>
 					</div>
 				</div>
-			</header>
+			</header> -->
 
 			<!-- Main content -->
+
 			<div class="flex-1 flex items-stretch overflow-hidden">
 				<main class="flex-1 overflow-y-auto">
 					<div class="pt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div class="flex">
-							<h1 class="flex-1 text-2xl font-bold text-gray-900">Movies</h1>
+							<h1
+								class="flex-1 text-2xl font-bold text-gray-900 dark:text-white"
+							>
+								Movies
+							</h1>
 							<div
-								class="
-									ml-6
-									bg-gray-100
-									p-0.5
-									rounded-lg
-									flex
-									items-center
-									sm:hidden
-								"
+								class="ml-6 bg-gray-100 p-0.5 rounded-lg flex items-center sm:hidden"
 							>
 								<button
 									type="button"
-									class="
-										p-1.5
-										rounded-md
-										text-gray-400
-										hover:bg-white hover:shadow-sm
-										focus:outline-none
-										focus:ring-2
-										focus:ring-inset
-										focus:ring-indigo-500
-									"
+									class="p-1.5 rounded-md text-gray-400 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
 								>
 									<ViewListIcon class="h-5 w-5" aria-hidden="true" />
 									<span class="sr-only">Use list view</span>
 								</button>
 								<button
 									type="button"
-									class="
-										ml-0.5
-										bg-white
-										p-1.5
-										rounded-md
-										shadow-sm
-										text-gray-400
-										focus:outline-none
-										focus:ring-2
-										focus:ring-inset
-										focus:ring-indigo-500
-									"
+									class="ml-0.5 bg-white p-1.5 rounded-md shadow-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
 								>
 									<ViewGridIconSolid class="h-5 w-5" aria-hidden="true" />
 									<span class="sr-only">Use grid view</span>
@@ -371,20 +141,7 @@
 								<select
 									id="tabs"
 									name="tabs"
-									class="
-										block
-										w-full
-										pl-3
-										pr-10
-										py-2
-										text-base
-										border-gray-300
-										focus:outline-none
-										focus:ring-indigo-500
-										focus:border-indigo-500
-										sm:text-sm
-										rounded-md
-									"
+									class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
 								>
 									<option selected="">Recently Added</option>
 									<option>Library</option>
@@ -404,8 +161,8 @@
 											:aria-current="tab.current ? 'page' : undefined"
 											:class="[
 												tab.current
-													? 'border-indigo-500 text-indigo-600'
-													: 'border-transparent text-dark hover:text-gray-700 hover:border-gray-300',
+													? 'border-blue-500 text-blue-500'
+													: 'border-transparent text-dark dark:text-white hover:text-gray-700 hover:border-gray-300',
 												'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm',
 											]"
 										>
@@ -413,46 +170,26 @@
 										</a>
 									</nav>
 									<div
-										class="
-											hidden
-											ml-6
-											bg-gray-100
-											p-0.5
-											rounded-lg
-											items-center
-											sm:flex
-										"
+										class="hidden ml-6 bg-gray-100 p-0.5 rounded-lg items-center sm:flex"
 									>
 										<button
+											@click="selectedView = 'list'"
 											type="button"
-											class="
-												p-1.5
-												rounded-md
-												text-gray-400
-												hover:bg-white hover:shadow-sm
-												focus:outline-none
-												focus:ring-2
-												focus:ring-inset
-												focus:ring-indigo-500
-											"
+											:class="[
+												{ 'shadow-sm bg-white': selectedView === 'list' },
+												'p-1.5 rounded-md text-gray-400 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500',
+											]"
 										>
 											<ViewListIcon class="h-5 w-5" aria-hidden="true" />
 											<span class="sr-only">Use list view</span>
 										</button>
 										<button
+											@click="selectedView = 'grid'"
 											type="button"
-											class="
-												ml-0.5
-												bg-white
-												p-1.5
-												rounded-md
-												shadow-sm
-												text-gray-400
-												focus:outline-none
-												focus:ring-2
-												focus:ring-inset
-												focus:ring-indigo-500
-											"
+											:class="[
+												{ 'shadow-sm bg-white': selectedView === 'grid' },
+												'ml-0.5 p-1.5 rounded-md text-gray-400 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500',
+											]"
 										>
 											<ViewGridIconSolid class="h-5 w-5" aria-hidden="true" />
 											<span class="sr-only">Use grid view</span>
@@ -462,322 +199,36 @@
 							</div>
 						</div>
 
-						<!-- Gallery -->
-						<section class="mt-8 pb-16" aria-labelledby="gallery-heading">
-							<h2 id="gallery-heading" class="sr-only">Recently added</h2>
-							<ul
-								role="list"
-								class="
-									grid grid-cols-2
-									gap-x-4 gap-y-8
-									sm:grid-cols-3 sm:gap-x-6
-									md:grid-cols-4
-									lg:grid-cols-3
-									xl:grid-cols-4 xl:gap-x-8
-								"
-							>
-								<li v-for="file in files" :key="file.name" class="relative">
-									<div
-										:class="[
-											file.current
-												? 'ring-2 ring-offset-2 ring-indigo-500'
-												: 'focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500',
-											'group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden',
-										]"
-									>
-										<img
-											:src="file.source"
-											alt=""
-											:class="[
-												file.current ? '' : 'group-hover:opacity-75',
-												'object-cover pointer-events-none',
-											]"
-										/>
-										<button
-											type="button"
-											class="absolute inset-0 focus:outline-none"
-										>
-											<span class="sr-only"
-												>View details for {{ file.name }}</span
-											>
-										</button>
-									</div>
-									<p
-										class="
-											mt-2
-											block
-											text-sm
-											font-medium
-											text-gray-900
-											truncate
-											pointer-events-none
-										"
-									>
-										{{ file.name }}
-									</p>
-									<p
-										class="
-											block
-											text-sm
-											font-medium
-											text-dark
-											pointer-events-none
-										"
-									>
-										{{ file.size }}
-									</p>
-								</li>
-							</ul>
-						</section>
+						<MovieGrid
+							v-if="selectedView === 'grid'"
+							:movies="movies"
+							:selected-movie="selectedMovie"
+							@select-movie="selectMovie"
+						/>
+						<MovieList
+							v-if="selectedView === 'list'"
+							:movies="movies"
+							:selected-movie="selectedMovie"
+							@select-movie="selectMovie"
+						/>
 					</div>
 				</main>
 
-				<!-- Details sidebar -->
-				<aside
-					class="
-						hidden
-						w-96
-						bg-white
-						p-8
-						border-l border-gray-200
-						overflow-y-auto
-						lg:block
-					"
-				>
-					<div class="pb-16 space-y-6">
-						<div>
-							<div
-								class="
-									block
-									w-full
-									aspect-w-10 aspect-h-7
-									rounded-lg
-									overflow-hidden
-								"
-							>
-								<img :src="currentFile.source" alt="" class="object-cover" />
-							</div>
-							<div class="mt-4 flex items-start justify-between">
-								<div>
-									<h2 class="text-lg font-medium text-gray-900">
-										<span class="sr-only">Details for </span
-										>{{ currentFile.name }}
-									</h2>
-									<p class="text-sm font-medium text-dark">
-										{{ currentFile.size }}
-									</p>
-								</div>
-								<button
-									type="button"
-									class="
-										ml-4
-										bg-white
-										rounded-full
-										h-8
-										w-8
-										flex
-										items-center
-										justify-center
-										text-gray-400
-										hover:bg-gray-100 hover:text-dark
-										focus:outline-none focus:ring-2 focus:ring-indigo-500
-									"
-								>
-									<HeartIcon
-										class="h-6 w-6"
-										aria-hidden="true"
-										@click="getLibrary"
-									/>
-									<span class="sr-only">Favorite</span>
-								</button>
-							</div>
-						</div>
-						<div>
-							<h3 class="font-medium text-gray-900">Information</h3>
-							<dl
-								class="
-									mt-2
-									border-t border-b border-gray-200
-									divide-y divide-gray-200
-								"
-							>
-								<div
-									v-for="key in Object.keys(currentFile.information)"
-									:key="key"
-									class="py-3 flex justify-between text-sm font-medium"
-								>
-									<dt class="text-dark">{{ key }}</dt>
-									<dd class="text-gray-900">
-										{{ currentFile.information[key] }}
-									</dd>
-								</div>
-							</dl>
-						</div>
-						<div>
-							<h3 class="font-medium text-gray-900">Description</h3>
-							<div class="mt-2 flex items-center justify-between">
-								<p class="text-sm text-dark italic">
-									Add a description to this image.
-								</p>
-								<button
-									type="button"
-									class="
-										bg-white
-										rounded-full
-										h-8
-										w-8
-										flex
-										items-center
-										justify-center
-										text-gray-400
-										hover:bg-gray-100 hover:text-dark
-										focus:outline-none focus:ring-2 focus:ring-indigo-500
-									"
-								>
-									<PencilIcon class="h-5 w-5" aria-hidden="true" />
-									<span class="sr-only">Add description</span>
-								</button>
-							</div>
-						</div>
-						<div>
-							<h3 class="font-medium text-gray-900">Shared with</h3>
-							<ul
-								class="
-									mt-2
-									border-t border-b border-gray-200
-									divide-y divide-gray-200
-								"
-							>
-								<li
-									v-for="person in currentFile.sharedWith"
-									:key="person.id"
-									class="py-3 flex justify-between items-center"
-								>
-									<div class="flex items-center">
-										<img
-											:src="person.imageUrl"
-											alt=""
-											class="w-8 h-8 rounded-full"
-										/>
-										<p class="ml-4 text-sm font-medium text-gray-900">
-											{{ person.name }}
-										</p>
-									</div>
-									<button
-										type="button"
-										class="
-											ml-6
-											bg-white
-											rounded-md
-											text-sm
-											font-medium
-											text-indigo-600
-											hover:text-indigo-500
-											focus:outline-none
-											focus:ring-2
-											focus:ring-offset-2
-											focus:ring-indigo-500
-										"
-									>
-										Remove<span class="sr-only"> {{ person.name }}</span>
-									</button>
-								</li>
-								<li class="py-2 flex justify-between items-center">
-									<button
-										type="button"
-										class="
-											group
-											-ml-1
-											bg-white
-											p-1
-											rounded-md
-											flex
-											items-center
-											focus:outline-none focus:ring-2 focus:ring-indigo-500
-										"
-									>
-										<span
-											class="
-												w-8
-												h-8
-												rounded-full
-												border-2 border-dashed border-gray-300
-												flex
-												items-center
-												justify-center
-												text-gray-400
-											"
-										>
-											<PlusIconSolid class="h-5 w-5" aria-hidden="true" />
-										</span>
-										<span
-											class="
-												ml-4
-												text-sm
-												font-medium
-												text-indigo-600
-												group-hover:text-indigo-500
-											"
-											>Share</span
-										>
-									</button>
-								</li>
-							</ul>
-						</div>
-						<div class="flex">
-							<base-button>Download</base-button>
-							<button
-								type="button"
-								class="
-									flex-1
-									ml-3
-									bg-white
-									py-2
-									px-4
-									border border-gray-300
-									rounded-md
-									shadow-sm
-									text-sm
-									font-medium
-									text-gray-700
-									hover:bg-gray-50
-									focus:outline-none
-									focus:ring-2
-									focus:ring-offset-2
-									focus:ring-blue-500
-								"
-							>
-								Delete
-							</button>
-						</div>
-					</div>
-				</aside>
+				<MovieSelectedDetails
+					v-if="showSidebar"
+					:selected-movie="selectedMovie"
+					@fetch-library="getLibrary"
+				/>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { TransitionRoot } from '@headlessui/vue';
 import {
-	Dialog,
-	DialogOverlay,
-	Menu,
-	MenuButton,
-	MenuItem,
-	MenuItems,
-	TransitionChild,
-	TransitionRoot,
-} from '@headlessui/vue';
-import {
-	CogIcon,
-	CollectionIcon,
-	HeartIcon,
-	HomeIcon,
 	MenuAlt2Icon,
-	PhotographIcon,
 	PlusIcon as PlusIconOutline,
-	UserGroupIcon,
 	ViewGridIcon as ViewGridIconOutline,
 	XIcon,
 } from '@heroicons/vue/outline';
@@ -789,121 +240,17 @@ import {
 	ViewListIcon,
 } from '@heroicons/vue/solid';
 
-const userNavigation = [
-	{ name: 'Your profile', href: '#' },
-	{ name: 'Sign out', href: '#' },
-];
 const tabs = [
 	{ name: 'Recently Added', href: '#', current: true },
 	{ name: 'Library', href: '#', current: false },
 	{ name: 'Favorited', href: '#', current: false },
 ];
-const files = [
-	{
-		name: 'IMG_4985.HEIC',
-		size: '3.9 MB',
-		source:
-			'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-		current: true,
-	},
-	{
-		name: 'IMG_4985.HEIC',
-		size: '3.9 MB',
-		source:
-			'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-		current: true,
-	},
-	{
-		name: 'IMG_4985.HEIC',
-		size: '3.9 MB',
-		source:
-			'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-		current: true,
-	},
-	{
-		name: 'IMG_4985.HEIC',
-		size: '3.9 MB',
-		source:
-			'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-		current: true,
-	},
-	{
-		name: 'IMG_4985.HEIC',
-		size: '3.9 MB',
-		source:
-			'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-		current: true,
-	},
-	{
-		name: 'IMG_4985.HEIC',
-		size: '3.9 MB',
-		source:
-			'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-		current: true,
-	},
-	{
-		name: 'IMG_4985.HEIC',
-		size: '3.9 MB',
-		source:
-			'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-		current: true,
-	},
-	{
-		name: 'IMG_4985.HEIC',
-		size: '3.9 MB',
-		source:
-			'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-		current: true,
-	},
-	{
-		name: 'IMG_4985.HEIC',
-		size: '3.9 MB',
-		source:
-			'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-		current: true,
-	},
-	// More files...
-];
-const currentFile = {
-	name: 'IMG_4985.HEIC',
-	size: '3.9 MB',
-	source:
-		'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-	information: {
-		'Uploaded by': 'Marie Culver',
-		Created: 'June 8, 2020',
-		'Last modified': 'June 8, 2020',
-		Dimensions: '4032 x 3024',
-		Resolution: '72 x 72',
-	},
-	sharedWith: [
-		{
-			id: 1,
-			name: 'Aimee Douglas',
-			imageUrl:
-				'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=1024&h=1024&q=80',
-		},
-		{
-			id: 2,
-			name: 'Andrea McMillan',
-			imageUrl:
-				'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=oilqXxSqey&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-		},
-	],
-};
 
 export default {
 	name: 'Movies',
+
 	components: {
-		Dialog,
-		DialogOverlay,
-		Menu,
-		MenuButton,
-		MenuItem,
-		MenuItems,
-		TransitionChild,
 		TransitionRoot,
-		HeartIcon,
 		MenuAlt2Icon,
 		PencilIcon,
 		PlusIconOutline,
@@ -913,40 +260,284 @@ export default {
 		ViewListIcon,
 		XIcon,
 	},
-	setup() {
-		const mobileMenuOpen = ref(false);
 
+	data() {
 		return {
-			userNavigation,
-			tabs,
-			files,
-			currentFile,
-			mobileMenuOpen,
+			movies: [
+				{
+					title: 'Talladega Nights: The Ballad of Ricky Bobby',
+					originalTitle: 'Talladega Nights: The Ballad of Ricky Bobby',
+					alternateTitles: [
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'High, Wide, and Handsome',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 1,
+								name: 'English',
+							},
+							id: 4,
+						},
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'Talladega Nights',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 1,
+								name: 'English',
+							},
+							id: 5,
+						},
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'Рікі Боббі: Король дороги',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 1,
+								name: 'English',
+							},
+							id: 6,
+						},
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'As Corridas Loucas de Ricky Bobby',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 18,
+								name: 'Portuguese',
+							},
+							id: 7,
+						},
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'Priča o Rickyju Bobbyju',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 1,
+								name: 'English',
+							},
+							id: 8,
+						},
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'Ricky Bobby - legendaarne kihutaja',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 1,
+								name: 'English',
+							},
+							id: 9,
+						},
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'タラデガ・ナイト　オーバルの狼',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 1,
+								name: 'English',
+							},
+							id: 10,
+						},
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'Rikijs Bobijs - ātruma karalis',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 1,
+								name: 'English',
+							},
+							id: 11,
+						},
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'Talladega Nights: Balada lui Ricky Bobby',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 27,
+								name: 'Romanian',
+							},
+							id: 12,
+						},
+						{
+							sourceType: 'tmdb',
+							movieId: 2,
+							title: 'Прича о Рикију Бобију',
+							sourceId: 0,
+							votes: 0,
+							voteCount: 0,
+							language: {
+								id: 1,
+								name: 'English',
+							},
+							id: 13,
+						},
+					],
+					secondaryYearSourceId: 0,
+					sortTitle: 'talladega nights ballad ricky bobby',
+					sizeOnDisk: 24408894505,
+					status: 'released',
+					overview:
+						"The fastest man on four wheels, Ricky Bobby is one of the greatest drivers in NASCAR history. A big, hairy American winning machine, Ricky has everything a dimwitted daredevil could want, a luxurious mansion, a smokin' hot wife and all the fast food he can eat. But Ricky's turbo-charged lifestyle hits an unexpected speed bump when he's bested by flamboyant Euro-idiot Jean Girard and reduced to a fear-ridden wreck.",
+					inCinemas: '2006-08-04T00:00:00Z',
+					physicalRelease: '2007-02-13T00:00:00Z',
+					digitalRelease: '2009-01-08T00:00:00Z',
+					images: [
+						{
+							coverType: 'poster',
+							url: '/radarr/MediaCover/2/poster.jpg?lastWrite=637641209170001360',
+							remoteUrl:
+								'https://image.tmdb.org/t/p/original/3iCiTqsmJz1mO85AHzTiHNkRmb6.jpg',
+						},
+						{
+							coverType: 'fanart',
+							url: '/radarr/MediaCover/2/fanart.jpg?lastWrite=637767796164778824',
+							remoteUrl:
+								'https://image.tmdb.org/t/p/original/qTVgXx0pgBmsGqc8wJsfbd71ppa.jpg',
+						},
+					],
+					website:
+						'https://www.sonypictures.com/movies/talladeganightstheballadofrickybobby',
+					year: 2006,
+					hasFile: true,
+					youTubeTrailerId: 'myKtVl8N7jU',
+					studio: 'Relativity Media',
+					path: '/home34/tocks/media/movies/Talladega Nights The Ballad of Ricky Bobby (2006)',
+					qualityProfileId: 4,
+					monitored: true,
+					minimumAvailability: 'inCinemas',
+					isAvailable: true,
+					folderName:
+						'/home34/tocks/media/movies/Talladega Nights The Ballad of Ricky Bobby (2006)',
+					runtime: 106,
+					cleanTitle: 'talladeganightsballadrickybobby',
+					imdbId: 'tt0415306',
+					tmdbId: 9718,
+					titleSlug: '9718',
+					certification: 'PG-13',
+					genres: ['Comedy'],
+					tags: [],
+					added: '2021-08-09T15:48:36Z',
+					ratings: {
+						votes: 1248,
+						value: 6.3,
+					},
+					movieFile: {
+						movieId: 2,
+						relativePath:
+							'Talladega Nights The Ballad of Ricky Bobby (2006) Remux-1080p.mkv',
+						path: '/home34/tocks/media/movies/Talladega Nights The Ballad of Ricky Bobby (2006)/Talladega Nights The Ballad of Ricky Bobby (2006) Remux-1080p.mkv',
+						size: 24408894505,
+						dateAdded: '2021-08-09T16:08:08Z',
+						indexerFlags: 0,
+						quality: {
+							quality: {
+								id: 30,
+								name: 'Remux-1080p',
+								source: 'bluray',
+								resolution: 1080,
+								modifier: 'remux',
+							},
+							revision: {
+								version: 1,
+								real: 0,
+								isRepack: false,
+							},
+						},
+						mediaInfo: {
+							audioAdditionalFeatures: 'XLL',
+							audioBitrate: 2288201,
+							audioChannels: 5.1,
+							audioCodec: 'DTS-HD MA',
+							audioLanguages: 'English / English',
+							audioStreamCount: 2,
+							videoBitDepth: 8,
+							videoBitrate: 24087787,
+							videoCodec: 'MPEG2',
+							videoFps: 23.976,
+							resolution: '1920x1080',
+							runTime: '2:01:26',
+							scanType: 'Progressive',
+							subtitles: 'English / English / French',
+						},
+						originalFilePath:
+							'Talladega.Nights.The.Ballad.of.Ricky.Bobby.2006.UNRATED.Remux.1080p.BluRay.MPEG-2.DTS-HD.MA.5.1-LEGi0N English/53aa1f72d64af5909e85627e3229c214.mkv',
+						qualityCutoffNotMet: false,
+						languages: [
+							{
+								id: 1,
+								name: 'English',
+							},
+						],
+						releaseGroup: 'LEGi0N',
+						edition: 'UNRATED',
+						id: 1,
+					},
+					id: 2,
+				},
+			],
+			selectedMovie: null,
+			selectedView: 'grid',
 		};
 	},
+
+	setup() {
+		return {
+			tabs,
+		};
+	},
+
+	computed: {
+		showSidebar() {
+			return this.selectedMovie !== null;
+		},
+	},
+
 	methods: {
 		getLibrary() {
+			console.log('fetching library');
+			const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+			const url = `https://${import.meta.env.VITE_APP_RADARR_DOMAIN}/movie`;
 			const options = {
 				method: 'GET',
-				url: 'https://cors-anywhere.herokuapp.com/https://tocks.lw601.usbx.me/media/movies',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: 'Basic dG9ja3M6RXpyaWFoMyM=',
-				},
+				url: proxyurl + url,
+				params: { apikey: import.meta.env.VITE_APP_RADARR_KEY },
 			};
+
 			this.axios.request(options).then((res) => {
-				let el = document.createElement('all-movies');
-				el.innerHTML = res.data;
-				const moviesHTML = el.getElementsByTagName('a');
-				let movies = [...moviesHTML];
-				let movieLibrary = [];
-				movies.forEach((movie) => {
-					let title = movie.pathname.trim().slice(1, -1);
-					title = decodeURI(title);
-					movieLibrary.push(title.replace(/\([^()]*\)/g, '').trim());
-				});
-				console.log(movieLibrary);
+				this.movies = res.data;
+				console.log(this.movies);
 			});
+		},
+
+		selectMovie(movie) {
+			this.selectedMovie = movie;
 		},
 	},
 };

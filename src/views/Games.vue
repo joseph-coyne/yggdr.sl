@@ -30,15 +30,7 @@
 					leave-to="-translate-x-full"
 				>
 					<div
-						class="
-							relative
-							max-w-xs
-							w-full
-							bg-indigo-700
-							pt-5
-							pb-4
-							flex-1 flex flex-col
-						"
+						class="relative max-w-xs w-full bg-indigo-700 pt-5 pb-4 flex-1 flex flex-col"
 					>
 						<TransitionChild
 							as="template"
@@ -52,15 +44,7 @@
 							<div class="absolute top-1 right-0 -mr-14 p-1">
 								<button
 									type="button"
-									class="
-										h-12
-										w-12
-										rounded-full
-										flex
-										items-center
-										justify-center
-										focus:outline-none focus:ring-2 focus:ring-white
-									"
+									class="h-12 w-12 rounded-full flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-white"
 									@click="mobileMenuOpen = false"
 								>
 									<XIcon class="h-6 w-6 text-dark" aria-hidden="true" />
@@ -117,30 +101,11 @@
 		<div class="flex-1 flex flex-col overflow-hidden">
 			<header class="w-full">
 				<div
-					class="
-						relative
-						z-10
-						flex-shrink-0
-						h-16
-						bg-white
-						border-b border-gray-200
-						shadow-sm
-						flex
-					"
+					class="relative z-10 flex-shrink-0 h-16 bg-white border-b border-gray-200 shadow-sm flex"
 				>
 					<button
 						type="button"
-						class="
-							border-r border-gray-200
-							px-4
-							dark:text-white
-							text-white
-							focus:outline-none
-							focus:ring-2
-							focus:ring-inset
-							focus:ring-indigo-500
-							md:hidden
-						"
+						class="border-r border-gray-200 px-4 dark:text-white text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
 						@click="mobileMenuOpen = true"
 					>
 						<span class="sr-only">Open sidebar</span>
@@ -153,22 +118,10 @@
 									>Search all files</label
 								>
 								<div
-									class="
-										relative
-										w-full
-										text-gray-400
-										focus-within:text-gray-600
-									"
+									class="relative w-full text-gray-400 focus-within:text-gray-600"
 								>
 									<div
-										class="
-											pointer-events-none
-											absolute
-											inset-y-0
-											left-0
-											flex
-											items-center
-										"
+										class="pointer-events-none absolute inset-y-0 left-0 flex items-center"
 									>
 										<SearchIcon
 											class="flex-shrink-0 h-5 w-5"
@@ -200,23 +153,7 @@
 									<input
 										name="search-field"
 										id="search-field"
-										class="
-											hidden
-											h-full
-											w-full
-											border-transparent
-											py-2
-											pl-8
-											pr-3
-											text-base text-gray-900
-											dark:text-white
-											placeholder-dark
-											focus:outline-none
-											focus:ring-0
-											focus:border-transparent
-											focus:placeholder-gray-400
-											sm:block
-										"
+										class="hidden h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 dark:text-white placeholder-dark focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400 sm:block"
 										placeholder="Search all files"
 										type="search"
 									/>
@@ -228,16 +165,7 @@
 							<Menu as="div" class="relative flex-shrink-0">
 								<div>
 									<MenuButton
-										class="
-											bg-white
-											rounded-full
-											flex
-											text-sm
-											focus:outline-none
-											focus:ring-2
-											focus:ring-offset-2
-											focus:ring-indigo-500
-										"
+										class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 									>
 										<span class="sr-only">Open user menu</span>
 										<img
@@ -256,19 +184,7 @@
 									leave-to-class="transform opacity-0 scale-95"
 								>
 									<MenuItems
-										class="
-											origin-top-right
-											absolute
-											right-0
-											mt-2
-											w-48
-											rounded-md
-											shadow-lg
-											py-1
-											bg-white
-											ring-1 ring-black ring-opacity-5
-											focus:outline-none
-										"
+										class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
 									>
 										<MenuItem
 											v-for="item in userNavigation"
@@ -290,20 +206,7 @@
 
 							<button
 								type="button"
-								class="
-									flex
-									bg-indigo-600
-									p-1
-									rounded-full
-									items-center
-									justify-center
-									text-white
-									hover:bg-indigo-700
-									focus:outline-none
-									focus:ring-2
-									focus:ring-offset-2
-									focus:ring-indigo-500
-								"
+								class="flex bg-indigo-600 p-1 rounded-full items-center justify-center text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 							>
 								<PlusIconOutline class="h-6 w-6" aria-hidden="true" />
 								<span class="sr-only">Add file</span>
@@ -324,46 +227,18 @@
 								Games
 							</h1>
 							<div
-								class="
-									ml-6
-									bg-gray-100
-									p-0.5
-									rounded-lg
-									flex
-									items-center
-									sm:hidden
-								"
+								class="ml-6 bg-gray-100 p-0.5 rounded-lg flex items-center sm:hidden"
 							>
 								<button
 									type="button"
-									class="
-										p-1.5
-										rounded-md
-										text-gray-400
-										hover:bg-white hover:shadow-sm
-										focus:outline-none
-										focus:ring-2
-										focus:ring-inset
-										focus:ring-indigo-500
-									"
+									class="p-1.5 rounded-md text-gray-400 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
 								>
 									<ViewListIcon class="h-5 w-5" aria-hidden="true" />
 									<span class="sr-only">Use list view</span>
 								</button>
 								<button
 									type="button"
-									class="
-										ml-0.5
-										bg-white
-										p-1.5
-										rounded-md
-										shadow-sm
-										text-gray-400
-										focus:outline-none
-										focus:ring-2
-										focus:ring-inset
-										focus:ring-indigo-500
-									"
+									class="ml-0.5 bg-white p-1.5 rounded-md shadow-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
 								>
 									<ViewGridIconSolid class="h-5 w-5" aria-hidden="true" />
 									<span class="sr-only">Use grid view</span>
@@ -378,20 +253,7 @@
 								<select
 									id="tabs"
 									name="tabs"
-									class="
-										block
-										w-full
-										pl-3
-										pr-10
-										py-2
-										text-base
-										border-gray-300
-										focus:outline-none
-										focus:ring-indigo-500
-										focus:border-indigo-500
-										sm:text-sm
-										rounded-md
-									"
+									class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
 								>
 									<option selected="">Recently Added</option>
 									<option>Library</option>
@@ -420,46 +282,18 @@
 										</a>
 									</nav>
 									<div
-										class="
-											hidden
-											ml-6
-											bg-gray-100
-											p-0.5
-											rounded-lg
-											items-center
-											sm:flex
-										"
+										class="hidden ml-6 bg-gray-100 p-0.5 rounded-lg items-center sm:flex"
 									>
 										<button
 											type="button"
-											class="
-												p-1.5
-												rounded-md
-												text-gray-400
-												hover:bg-white hover:shadow-sm
-												focus:outline-none
-												focus:ring-2
-												focus:ring-inset
-												focus:ring-indigo-500
-											"
+											class="p-1.5 rounded-md text-gray-400 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
 										>
 											<ViewListIcon class="h-5 w-5" aria-hidden="true" />
 											<span class="sr-only">Use list view</span>
 										</button>
 										<button
 											type="button"
-											class="
-												ml-0.5
-												bg-white
-												p-1.5
-												rounded-md
-												shadow-sm
-												text-gray-400
-												focus:outline-none
-												focus:ring-2
-												focus:ring-inset
-												focus:ring-indigo-500
-											"
+											class="ml-0.5 bg-white p-1.5 rounded-md shadow-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
 										>
 											<ViewGridIconSolid class="h-5 w-5" aria-hidden="true" />
 											<span class="sr-only">Use grid view</span>
@@ -474,14 +308,7 @@
 							<h2 id="gallery-heading" class="sr-only">Recently added</h2>
 							<ul
 								role="list"
-								class="
-									grid grid-cols-2
-									gap-x-4 gap-y-8
-									sm:grid-cols-3 sm:gap-x-6
-									md:grid-cols-4
-									lg:grid-cols-3
-									xl:grid-cols-4 xl:gap-x-8
-								"
+								class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
 							>
 								<li v-for="game in games" :key="game.name" class="relative">
 									<div
@@ -489,7 +316,7 @@
 											game.current
 												? 'ring-2 ring-offset-2 ring-indigo-500'
 												: 'focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500',
-											'group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden',
+											'group block w-full aspect-[2.09] rounded-lg bg-gray-100 overflow-hidden',
 										]"
 									>
 										<img
@@ -497,7 +324,7 @@
 											alt=""
 											:class="[
 												game.current ? '' : 'group-hover:opacity-75',
-												'object-cover pointer-events-none',
+												'object-cover pointer-events-none w-full h-full',
 											]"
 										/>
 										<button
@@ -510,28 +337,12 @@
 										</button>
 									</div>
 									<p
-										class="
-											mt-2
-											block
-											text-sm
-											font-medium
-											text-gray-900
-											dark:text-white
-											truncate
-											pointer-events-none
-										"
+										class="mt-2 block text-sm font-medium text-gray-900 dark:text-white truncate pointer-events-none"
 									>
-										{{ game.name }}
+										{{ game.name || game.title }}
 									</p>
 									<p
-										class="
-											block
-											text-sm
-											font-medium
-											dark:text-white
-											text-white
-											pointer-events-none
-										"
+										class="block text-sm font-medium dark:text-white text-white pointer-events-none"
 									>
 										{{ game.size }}
 									</p>
@@ -540,253 +351,17 @@
 						</section>
 					</div>
 				</main>
-
-				<!-- Details sidebar -->
-				<aside
-					class="
-						hidden
-						w-96
-						bg-white
-						p-8
-						border-l border-gray-200
-						overflow-y-auto
-						lg:block
-					"
-				>
-					<div class="pb-16 space-y-6">
-						<div>
-							<div
-								class="
-									block
-									w-full
-									aspect-w-10 aspect-h-7
-									rounded-lg
-									overflow-hidden
-								"
-							>
-								<img :src="currentFile.source" alt="" class="object-cover" />
-							</div>
-							<div class="mt-4 flex items-start justify-between">
-								<div>
-									<h2 class="text-lg font-medium text-gray-900 dark:text-white">
-										<span class="sr-only">Details for </span
-										>{{ currentFile.name }}
-									</h2>
-									<p class="text-sm font-medium dark:text-white text-dark">
-										{{ currentFile.size }}
-									</p>
-								</div>
-								<button
-									type="button"
-									class="
-										ml-4
-										bg-white
-										rounded-full
-										h-8
-										w-8
-										flex
-										items-center
-										justify-center
-										text-gray-400
-										hover:bg-gray-100 hover:dark:text-white
-										focus:outline-none focus:ring-2 focus:ring-indigo-500
-									"
-								>
-									<HeartIcon
-										class="h-6 w-6"
-										aria-hidden="true"
-										@click="getLibrary"
-									/>
-									<span class="sr-only">Favorite</span>
-								</button>
-							</div>
-						</div>
-						<div>
-							<h3 class="font-medium text-gray-900 dark:text-white">
-								Information
-							</h3>
-							<dl
-								class="
-									mt-2
-									border-t border-b border-gray-200
-									divide-y divide-gray-200
-								"
-							>
-								<div
-									v-for="key in Object.keys(currentFile.information)"
-									:key="key"
-									class="py-3 flex justify-between text-sm font-medium"
-								>
-									<dt class="dark:text-white text-dark">{{ key }}</dt>
-									<dd class="text-gray-900 dark:text-white">
-										{{ currentFile.information[key] }}
-									</dd>
-								</div>
-							</dl>
-						</div>
-						<div>
-							<h3 class="font-medium text-gray-900 dark:text-white">
-								Description
-							</h3>
-							<div class="mt-2 flex items-center justify-between">
-								<p class="text-sm dark:text-white text-dark italic">
-									Add a description to this image.
-								</p>
-								<button
-									type="button"
-									class="
-										bg-white
-										rounded-full
-										h-8
-										w-8
-										flex
-										items-center
-										justify-center
-										text-gray-400
-										hover:bg-gray-100 hover:dark:text-white
-										text-white
-										focus:outline-none focus:ring-2 focus:ring-indigo-500
-									"
-								>
-									<PencilIcon class="h-5 w-5" aria-hidden="true" />
-									<span class="sr-only">Add description</span>
-								</button>
-							</div>
-						</div>
-						<div>
-							<h3 class="font-medium text-gray-900 dark:text-white">
-								Shared with
-							</h3>
-							<ul
-								class="
-									mt-2
-									border-t border-b border-gray-200
-									divide-y divide-gray-200
-								"
-							>
-								<li
-									v-for="person in currentFile.sharedWith"
-									:key="person.id"
-									class="py-3 flex justify-between items-center"
-								>
-									<div class="flex items-center">
-										<img
-											:src="person.imageUrl"
-											alt=""
-											class="w-8 h-8 rounded-full"
-										/>
-										<p
-											class="
-												ml-4
-												text-sm
-												font-medium
-												text-gray-900
-												dark:text-white
-											"
-										>
-											{{ person.name }}
-										</p>
-									</div>
-									<button
-										type="button"
-										class="
-											ml-6
-											bg-white
-											rounded-md
-											text-sm
-											font-medium
-											text-indigo-600
-											hover:text-indigo-500
-											focus:outline-none
-											focus:ring-2
-											focus:ring-offset-2
-											focus:ring-indigo-500
-										"
-									>
-										Remove<span class="sr-only"> {{ person.name }}</span>
-									</button>
-								</li>
-								<li class="py-2 flex justify-between items-center">
-									<button
-										type="button"
-										class="
-											group
-											-ml-1
-											bg-white
-											p-1
-											rounded-md
-											flex
-											items-center
-											focus:outline-none focus:ring-2 focus:ring-indigo-500
-										"
-									>
-										<span
-											class="
-												w-8
-												h-8
-												rounded-full
-												border-2 border-dashed border-gray-300
-												flex
-												items-center
-												justify-center
-												text-gray-400
-											"
-										>
-											<PlusIconSolid class="h-5 w-5" aria-hidden="true" />
-										</span>
-										<span
-											class="
-												ml-4
-												text-sm
-												font-medium
-												text-indigo-600
-												group-hover:text-indigo-500
-											"
-											>Share</span
-										>
-									</button>
-								</li>
-							</ul>
-						</div>
-						<div class="flex">
-							<base-button>Download</base-button>
-							<button
-								type="button"
-								class="
-									flex-1
-									ml-3
-									bg-white
-									py-2
-									px-4
-									border border-gray-300
-									rounded-md
-									shadow-sm
-									text-sm
-									font-medium
-									text-gray-700
-									hover:bg-gray-50
-									focus:outline-none
-									focus:ring-2
-									focus:ring-offset-2
-									focus:ring-blue-500
-								"
-							>
-								Delete
-							</button>
-						</div>
-					</div>
-				</aside>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import firebaseConfig from '@/firebase/init';
-import { initializeApp } from 'firebase/app';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
-const app = initializeApp(firebaseConfig.firebaseConfig);
+import app from '../firebase/init';
 const db = getFirestore(app);
+// const app = initializeApp(firebaseConfig.firebaseConfig);
+
 import { ref } from 'vue';
 import {
 	Dialog,
@@ -924,6 +499,12 @@ const gamesSnap = await getDocs(collection(db, 'games'));
 let games = [];
 gamesSnap.forEach((game) => {
 	games.push(game.data());
+});
+// sort games alphabetically
+games.sort((a, b) => {
+	if (a.title < b.title) return -1;
+	if (a.title > b.title) return 1;
+	return 0;
 });
 
 export default {

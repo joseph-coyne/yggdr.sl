@@ -3,10 +3,10 @@ import { createApp } from 'vue';
 import { routes } from './routes.js';
 import { createRouter, createWebHistory } from 'vue-router';
 import './tailwind.css';
+import './firebase/init';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import BaseButton from '@/components/BaseButton.vue';
-
 
 const app = createApp(App);
 
