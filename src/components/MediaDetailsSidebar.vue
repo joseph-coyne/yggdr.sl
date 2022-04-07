@@ -9,46 +9,51 @@
 		leave-to="opacity-0 translate-x-full"
 	>
 		<aside
-			class="hidden w-96 bg-white p-8 border-l border-gray-200 overflow-y-auto lg:block"
+			class="hidden w-96 h-full bg-white p-8 border-l border-gray-200 overflow-y-auto lg:block"
 		>
 			<div class="pb-16 space-y-6">
 				<div>
-					<div class="block w-full aspect-[2/3] rounded-lg overflow-hidden">
+					<div class="block w-full rounded-lg overflow-hidden">
 						<img
-							:src="selectedMovie.images[0].remoteUrl"
-							alt=""
-							class="object-cover"
+							:src="mediaImage"
+							:alt="`${selectedMedia.title}-poster`"
+							class="object-cover aspect-[2/3]"
 						/>
 					</div>
 					<div class="mt-4 flex items-start justify-between">
 						<div>
 							<h2 class="text-lg font-medium text-gray-900">
 								<span class="sr-only">Details for </span
-								>{{ selectedMovie.title }}
+								>{{ selectedMedia.title }}
 							</h2>
 							<!-- <p class="text-sm font-medium text-dark">
-										{{ formatFileSize(selectedMovie.sizeOnDisk) }}
+										{{ formatFileSize(selectedMedia.sizeOnDisk) }}
 									</p> -->
-							<p class="text-sm font-medium text-dark">
-								{{ selectedMovie.year }}
-							</p>
-							<p class="text-sm font-medium text-dark">
-								{{ selectedMovie.certification }}
-							</p>
+							<div
+								class="flex flex-row space-x-2 items-baseline text-slate-500 text-sm font-medium dark:text-white pointer-events-none"
+							>
+								<p class="text-sm font-medium text-dark">
+									{{ selectedMedia.year }}
+								</p>
+								<span class="text-lg">•</span>
+								<p class="text-sm font-medium text-dark">
+									{{ selectedMedia.certification }}
+								</p>
+							</div>
 						</div>
-						<button
+						<!-- <button
 							type="button"
 							class="ml-4 bg-white rounded-full h-8 w-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-dark focus:outline-none focus:ring-2 focus:ring-blue-500"
 							@click="$emit('fetch-library')"
 						>
 							<HeartIcon class="h-6 w-6" aria-hidden="true" />
 							<span class="sr-only">Favorite</span>
-						</button>
+						</button> -->
 					</div>
 				</div>
 				<div>
 					<div
-						v-if="!selectedMovie.overview"
+						v-if="!selectedMedia.overview"
 						class="mt-2 flex items-center justify-between"
 					>
 						<p class="text-sm text-dark italic">
@@ -64,7 +69,7 @@
 					</div>
 					<div class="mt-2 flex items-center justify-between">
 						<p class="text-sm text-dark">
-							{{ selectedMovie.overview }}
+							{{ selectedMedia.overview }}
 						</p>
 					</div>
 				</div>
@@ -76,14 +81,16 @@
 						<div class="py-3 flex justify-between text-sm font-medium">
 							<dt class="text-dark">Video:</dt>
 							<dd class="text-gray-900">
-								{{ selectedMovie?.movieFile.quality.quality.name }}
+								{{ selectedMedia?.movieFile?.quality?.quality.name || 'N/A' }}
 							</dd>
 						</div>
 						<div class="py-3 flex justify-between text-sm font-medium">
 							<dt class="text-dark">Audio:</dt>
 							<dd class="text-gray-900">
-								{{ selectedMovie?.movieFile.mediaInfo.audioCodec }}
-								({{ selectedMovie?.movieFile.mediaInfo.audioChannels }})
+								{{ selectedMedia?.movieFile?.mediaInfo.audioCodec || 'N/A' }}
+								({{
+									selectedMedia?.movieFile?.mediaInfo.audioChannels || 'N/A'
+								}})
 							</dd>
 						</div>
 						<div class="py-3 flex justify-between text-sm font-medium">
@@ -151,33 +158,6 @@
 </template>
 
 <script>
-const currentFile = {
-	name: 'IMG_4985.HEIC',
-	size: '3.9 MB',
-	source:
-		'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-	information: {
-		'Uploaded by': 'Marie Culver',
-		Created: 'June 8, 2020',
-		'Last modified': 'June 8, 2020',
-		Dimensions: '4032 x 3024',
-		Resolution: '72 x 72',
-	},
-	sharedWith: [
-		{
-			id: 1,
-			name: 'Aimee Douglas',
-			imageUrl:
-				'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=1024&h=1024&q=80',
-		},
-		{
-			id: 2,
-			name: 'Andrea McMillan',
-			imageUrl:
-				'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=oilqXxSqey&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-		},
-	],
-};
 import {
 	Dialog,
 	DialogOverlay,
@@ -208,7 +188,7 @@ import {
 	ViewListIcon,
 } from '@heroicons/vue/solid';
 export default {
-	name: 'MovieSelectedDetails',
+	name: 'MediaDetailsSidebar',
 
 	components: {
 		Dialog,
@@ -237,7 +217,7 @@ export default {
 	},
 
 	props: {
-		selectedMovie: {
+		selectedMedia: {
 			type: Object,
 			required: true,
 		},
@@ -245,14 +225,25 @@ export default {
 
 	computed: {
 		formattedSubtitles() {
-			let subtitles =
-				this.selectedMovie.movieFile.mediaInfo.subtitles.split('/');
-			subtitles = subtitles.map((subtitle) => subtitle.trim());
-			const uniqueSubtitles = [...new Set(subtitles)].join(' / ');
-			return uniqueSubtitles;
+			if (this.selectedMedia.movieFile) {
+				let subtitles =
+					this.selectedMedia.movieFile.mediaInfo.subtitles.split('/');
+				subtitles = subtitles.map((subtitle) => subtitle.trim());
+				const uniqueSubtitles = [...new Set(subtitles)].join(' / ');
+				return uniqueSubtitles;
+			} else {
+				return 'N/A';
+			}
 		},
+
 		showSidebar() {
-			return this.selectedMovie !== null;
+			return this.selectedMedia !== null;
+		},
+
+		mediaImage() {
+			return this.selectedMedia.images.find(
+				(image) => image.coverType === 'poster'
+			).remoteUrl;
 		},
 	},
 

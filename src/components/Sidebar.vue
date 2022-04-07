@@ -49,7 +49,7 @@ const navigation = [
 		path: '/movies',
 		icon: IconMovies,
 	},
-	{ name: 'Series', path: '/tv', icon: IconTV },
+	{ name: 'TV Shows', path: '/tv', icon: IconTV },
 	{ name: 'Games', path: '/games', icon: IconGames },
 ];
 

@@ -1,6 +1,7 @@
 import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Movies from './views/Movies.vue';
+import Shows from './views/Shows.vue';
 import Games from './views/Games.vue';
 import NotFound from './views/NotFound.vue';
 
@@ -8,6 +9,7 @@ import NotFound from './views/NotFound.vue';
 export const routes = [
 	{ path: '/', component: Home, meta: { title: 'Home' } },
 	{ path: '/movies', component: Movies, meta: { title: 'Movies' } },
+	{ path: '/tv', component: Shows, meta: { title: 'Shows' } },
 	{ path: '/games', component: Games, meta: { title: 'Games' } },
 	{
 		path: '/about',

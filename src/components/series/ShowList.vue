@@ -1,6 +1,5 @@
 <template>
 	<section class="mt-8 pb-16" aria-labelledby="gallery-heading">
-		<h2 id="gallery-heading" class="sr-only">Recently added</h2>
 		<ul role="list" class="flex flex-col h-full">
 			<MovieListItem
 				v-for="movie in movies"
@@ -22,6 +21,7 @@ export default {
 			type: Array,
 			required: true,
 		},
+
 		selectedMovie: {
 			type: Object,
 		},
