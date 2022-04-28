@@ -11,65 +11,11 @@
               >
                 Movies
               </h1>
-              <div
-                class="ml-6 bg-gray-100 p-0.5 rounded-lg flex items-center sm:hidden"
-              >
-                <button
-                  type="button"
-                  class="p-1.5 rounded-md text-gray-400 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-                >
-                  <ViewListIcon class="h-5 w-5" aria-hidden="true" />
-                  <span class="sr-only">Use list view</span>
-                </button>
-                <button
-                  type="button"
-                  class="ml-0.5 bg-white p-1.5 rounded-md shadow-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-                >
-                  <ViewGridIconSolid class="h-5 w-5" aria-hidden="true" />
-                  <span class="sr-only">Use grid view</span>
-                </button>
-              </div>
+              <ListViewToggle class="sm:hidden" />
             </div>
 
             <!-- Tabs -->
-            <div class="mt-3 sm:mt-2">
-              <div class="sm:hidden">
-                <label for="tabs" class="sr-only">Select a tab</label>
-                <select
-                  id="tabs"
-                  name="tabs"
-                  class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-                >
-                  <option selected="">Recently Added</option>
-                  <option>Library</option>
-                  <option>Favorited</option>
-                </select>
-              </div>
-              <div class="hidden sm:block">
-                <div class="flex items-center border-b border-gray-200">
-                  <nav
-                    class="flex-1 -mb-px flex space-x-6 xl:space-x-8"
-                    aria-label="Tabs"
-                  >
-                    <a
-                      v-for="tab in tabs"
-                      :key="tab.name"
-                      :href="tab.href"
-                      :aria-current="tab.current ? 'page' : undefined"
-                      :class="[
-                        tab.current
-                          ? 'border-blue-500 text-blue-500'
-                          : 'border-transparent text-dark dark:text-white hover:text-gray-700 hover:border-gray-300',
-                        'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm',
-                      ]"
-                    >
-                      {{ tab.name }}
-                    </a>
-                  </nav>
-                  <ListViewToggle class="hidden sm:flex" />
-                </div>
-              </div>
-            </div>
+            <ListTabs class="hidden sm:flex" />
 
             <MovieGrid
               v-if="selectedView === 'grid'"
@@ -77,7 +23,7 @@
               :selected-movie="selectedMovie"
               @select-movie="selectMovie"
             />
-            <MovieList
+            <MediaList
               v-if="selectedView === 'list'"
               :movies="movies"
               :selected-movie="selectedMovie"
@@ -111,12 +57,6 @@ import {
   ViewGridIcon as ViewGridIconSolid,
   ViewListIcon,
 } from '@heroicons/vue/solid';
-
-const tabs = [
-  { name: 'Recently Added', href: '#', current: true },
-  { name: 'Library', href: '#', current: false },
-  { name: 'Favorited', href: '#', current: false },
-];
 
 export default {
   name: 'Movies',
@@ -376,12 +316,6 @@ export default {
       ],
       selectedMovie: null,
       selectedView: 'grid',
-    };
-  },
-
-  setup() {
-    return {
-      tabs,
     };
   },
 
