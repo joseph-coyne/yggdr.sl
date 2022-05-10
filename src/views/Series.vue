@@ -1,12 +1,12 @@
 <template>
-  <MediaLayout title="Games" />
+  <MediaLayout title="Series" />
 </template>
 
 <script>
 import MediaLayout from '../layouts/MediaLayout.vue';
 
 export default {
-  name: 'Games',
+  name: 'Shows',
 
   components: {
     MediaLayout,
