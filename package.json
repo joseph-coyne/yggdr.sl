@@ -15,7 +15,7 @@
 		"npm": "^8.5.5",
 		"pinia": "^2.0.13",
 		"vue": "^3.2.1",
-		"vue-axios": "^3.2.5",
+		"vue-axios": "^3.5.2",
 		"vue-router": "^4.0.8"
 	},
 	"devDependencies": {
